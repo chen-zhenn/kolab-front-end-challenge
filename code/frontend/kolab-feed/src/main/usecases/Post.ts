@@ -1,10 +1,16 @@
-import { IPost } from '../../domain/models'
-import { IHttpParams, IHttpResponse } from '../../infra/protocols'
-import { AxiosHttpClient } from '../../infra/http/axios/AxiosHttpClient'
-import { HttpClient } from '../../infra/http/HttpClient' 
-import { ServiceGetPost } from '../services'
+import { IPost } from '@/domain/models'
+import { 
+    IHttpParams, 
+    IHttpResponse,
+    AxiosHttpClient,
+    HttpClient,
+} from '@/infra'
 
-export default function makePost() {
+import { 
+    ServiceGetPost, 
+} from '@/main/services'
+
+export function makePost() {
 
     async function getAll(): Promise<IHttpResponse<IPost[]>> {
 
