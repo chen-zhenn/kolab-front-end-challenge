@@ -32,7 +32,8 @@ export default function Feed(){
                             listStyle: 'none',
                             display: 'flex',
                             flexFlow: 'column',
-                            flexWrap: 'wrap', 
+                            flexWrap: 'wrap',
+                            marginTop: 'unset', 
                             padding: '13px',
                             textAlign: 'left', 
                             border: 'solid 1px rgba(0, 0, 0, 0.5)'
