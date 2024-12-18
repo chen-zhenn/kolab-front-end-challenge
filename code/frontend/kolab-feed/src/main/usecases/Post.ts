@@ -1,4 +1,7 @@
-import { IPost } from '@/domain/models'
+import { 
+    IPost, 
+} from '@/domain/models'
+
 import { 
     IHttpParams, 
     IHttpResponse,
@@ -10,12 +13,16 @@ import {
     ServiceGetPost, 
 } from '@/main/services'
 
+const { 
+    VITE_API_BASE_URL, 
+} = import.meta.env
+
 export function makePost() {
 
     async function getAll(): Promise<IHttpResponse<IPost[]>> {
 
         const params: IHttpParams = {
-            baseURL:'https://jsonplaceholder.typicode.com',
+            baseURL: VITE_API_BASE_URL,
             url: '/posts',
         }
 
