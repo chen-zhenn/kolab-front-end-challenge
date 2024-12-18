@@ -1,3 +1,4 @@
+import { IPost } from '../../domain/models'
 import { 
     IHttpClient, 
     IHttpParams,
@@ -7,16 +8,16 @@ import {
 
 import { HttpStatusMessages } from './protocols'
 
-export class ServiceGetPost<T> {
+export class ServiceGetPost {
     constructor(
         readonly params: IHttpParams,
-        readonly httpClient: IHttpClient<T>
+        readonly httpClient: IHttpClient<IPost[]>
     ) {
         this.params = params
         this.httpClient = httpClient
     }
 
-    async get(): Promise<IHttpResponse<T> | undefined> {
+    async get(): Promise<IHttpResponse<IPost[]>> {
 
         const response = await this.httpClient.get(this.params)
 
