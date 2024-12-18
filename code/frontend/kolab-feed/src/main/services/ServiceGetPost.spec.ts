@@ -6,16 +6,22 @@ import {
     vi,
 } from 'vitest'
 
-import { IPost } from '../../domain/models'
+import { 
+    IPost, 
+} from '@/domain/models'
+
 import {  
     IHttpParams,
     IHttpResponse,
     HttpStatusCode,
-} from '../../infra/protocols'
-import { HttpStatusMessages } from './protocols'
-import { AxiosHttpClient } from '../../infra/http/axios/AxiosHttpClient'
-import { HttpClient } from '../../infra/http/HttpClient' 
-import { ServiceGetPost} from '../services'
+    AxiosHttpClient,
+    HttpClient
+} from '@/infra'
+
+import { 
+    HttpStatusMessages,
+    ServiceGetPost, 
+} from '@/main/services'
 
 describe('Service Post', () => {
 

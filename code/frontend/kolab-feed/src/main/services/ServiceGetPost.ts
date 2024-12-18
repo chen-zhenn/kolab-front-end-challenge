@@ -1,12 +1,17 @@
-import { IPost } from '../../domain/models'
+import { 
+    IPost, 
+} from '@/domain/models'
+
 import { 
     IHttpClient, 
     IHttpParams,
     IHttpResponse,
     HttpStatusCode, 
-} from '../../infra/protocols'
+} from '@/infra'
 
-import { HttpStatusMessages } from './protocols'
+import { 
+    HttpStatusMessages, 
+} from '@/main/services'
 
 export class ServiceGetPost {
     constructor(

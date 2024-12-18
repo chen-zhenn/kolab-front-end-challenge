@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import './App.css'
-import makePost from './main/usecases/Post'
+import { makePost } from '@/main/usecases'
+
 function App() {
 
   useEffect(() => {
