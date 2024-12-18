@@ -16,8 +16,7 @@ export class AxiosHttpClient {
 
     private constructor(params: IHttpParams) {
         this.params = params
-        const { baseURL } = params
-        this.httpClient = axios.create(baseURL)
+        this.httpClient = axios.create({ ...params })
 
         this.httpClient.interceptors.request.use(
             (config) => this.handleRequestSuccess(config),

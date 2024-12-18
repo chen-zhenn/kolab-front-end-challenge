@@ -6,16 +6,14 @@ import {
 
 export class HttpClient<T> implements IHttpClient<T> {
 
-    constructor(private httpClient) {
+    constructor(private httpClient: any) {
         this.httpClient = httpClient
     }
 
     async get(params: IHttpParams): Promise<IHttpResponse<T>> {
-        const { baseURL, url } = params
-        const endpoint = `${baseURL}${url}`
-
+        const url = `${params.baseURL}${params.url}`
         try {
-            const response = await this.httpClient.get(endpoint)
+            const response = await this.httpClient.get(url)
             return response 
         } catch (error) {
             console.log(error)
