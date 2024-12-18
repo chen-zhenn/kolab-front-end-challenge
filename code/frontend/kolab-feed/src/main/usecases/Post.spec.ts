@@ -5,8 +5,8 @@ import {
     vi,
  } from 'vitest'
 
-import { IPost } from '../../domain/models'
-import makePost from './Post'
+import { IPost } from '@/domain/models'
+import { makePost } from '@/main/usecases'
 
 describe('Use Case Post', () => {
 
