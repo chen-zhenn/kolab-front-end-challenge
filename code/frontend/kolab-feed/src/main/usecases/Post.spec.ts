@@ -6,57 +6,85 @@ import {
  } from 'vitest'
 
 import { IPost } from '../../domain/models'
-import Post from './Post'
-
+import makePost from './Post'
 
 describe('Use Case Post', () => {
 
     describe('Smoke Test', () => {
-        const post = Post
+        const post = makePost
 
-        it('Should check if Post Factory exist', () => {
+        it('should check if Post Factory exist', () => {
             expect(post).toBeDefined()
         })
 
-        it('Should check if Post is a function', () => {  
+        it('should check if Post is a function', () => {  
             expect(typeof post).toBe('function')
         })
     })
 
     describe('GetPosts', () => {
-        const post = Post()
+        const post = makePost()
 
         describe('Smoke Test', () => {
 
-            it('Should return an getAll method', () => {
+            it('should return an getAll method', () => {
                 expect(post).toHaveProperty('getAll')
             })
 
-            it('Should check if getAll is a function', () => {
+            it('should check if getAll is a function', () => {
                 expect(typeof post.getAll).toBe('function')
+            })
+        })
+
+        describe('Status Code', () => {
+            
+            it('should return an status code 200 for Success', async () => {
+                const status = 200
+                const mock = { status }
+                post.getAll = vi.fn().mockResolvedValue(mock)
+                const response = await post.getAll()
+                expect(response.status).toEqual(mock.status)
+            })
+
+            it('should return an status code 400 for Bad request', async () => {
+                const status = 400
+                const mock = { status }
+                post.getAll = vi.fn().mockResolvedValue(mock)
+                const response = await post.getAll()
+                expect(response.status).toEqual(mock.status)
+            })
+
+            it('should return an status code 500 for Server Error', async () => {
+                const status = 500
+                const mock = { status }
+                post.getAll = vi.fn().mockResolvedValue(mock)
+                const response = await post.getAll()
+                expect(response.status).toEqual(mock.status)
             })
         })
 
         describe('Data', () => {
             
             it('should return an empty array', async () => {
-                const mockData: IPost[] = []
-                post.getAll = vi.fn().mockResolvedValue(mockData)
-                const result = await post.getAll()
-                expect(result).toEqual(mockData)
+                const data: IPost[] = []
+                const mock = { data }
+                post.getAll = vi.fn().mockResolvedValue(mock)
+                const response = await post.getAll()
+                expect(response.data).toEqual(mock.data)
             })
 
             it('should return an array of Post', async () => {
-                const mockData: IPost[] = [{
+                const data: IPost[] = [{
                     userId: 1,
                     id: 1,
                     title: 'Post 1',
                     body: ''
 
                 }]
-                post.getAll = vi.fn().mockResolvedValue(mockData)
-                const result = await post.getAll()
-                expect(result).toEqual(mockData)
+                const mock = { data }
+                post.getAll = vi.fn().mockResolvedValue(mock)
+                const response = await post.getAll()
+                expect(response.data).toEqual(mock.data)
             })
         })
 
