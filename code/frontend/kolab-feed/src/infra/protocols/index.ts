@@ -13,3 +13,11 @@ export interface IHttpResponse<T> {
 export interface IHttpClient<T> {
     get: (params: IHttpParams) => Promise<IHttpResponse<T>>;
 }
+
+export enum HttpStatusCode {
+    success = 200,
+    created = 201,
+    badrequest = 400,
+    notfound = 404,
+    servererror = 500,
+}
