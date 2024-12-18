@@ -13,6 +13,7 @@ export class ServiceGetPost {
         readonly params: IHttpParams,
         readonly httpClient: IHttpClient<IPost[]>
     ) {
+        if (!params || !httpClient) throw new Error()
         this.params = params
         this.httpClient = httpClient
     }
@@ -28,8 +29,6 @@ export class ServiceGetPost {
                 return { ...response, message: HttpStatusMessages.badrequest }
             case HttpStatusCode.success:
                 return { ...response, message: 'Sucesso: Dados de Post obtido com Sucesso!' }
-            case HttpStatusCode.created:
-                return { ...response, message: 'Sucesso: Post criado com Sucesso!' }
             default:
                 throw new Error()
         }
