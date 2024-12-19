@@ -1,16 +1,19 @@
-import { Layout } from '@/presentation/layout'
-import { Includes } from '@/presentation/includes'
 import { Outlet } from 'react-router'
-
+import { Layout } from '@/presentation/layout'
+import { TopBar }  from '@/presentation/components'
 
 function App() {
   return (
     <Layout.Wrap>
 
       <Layout.Module type='header'>
-        <Includes.Header>
-          Header Block
-        </Includes.Header>
+
+          <TopBar.Container>
+            <TopBar.Section type='brand' />
+            <TopBar.Section type='search' />
+            <TopBar.Section type='profile' />
+          </TopBar.Container>
+
       </Layout.Module>
 
       <Layout.Module type='content'>
@@ -18,9 +21,7 @@ function App() {
       </Layout.Module>
 
       <Layout.Module type='sidebar'>
-        <Includes.Sidebar>
           Sidebar Block
-        </Includes.Sidebar>
       </Layout.Module>
 
     </Layout.Wrap>
