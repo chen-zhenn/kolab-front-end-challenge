@@ -19,13 +19,9 @@ const router = createBrowserRouter([{
             path: '/feed',
             element: <View.Feed />,
             loader: async () => post.getAll()
-        }, {
-            path: '/post',
-            element: <View.Post />,
-            loader: async () => post.getAll()
         },{
             path: '/post/:userId',
-            element: <View.Post />,
+            element: <View.Feed />,
             loader: async ({ params }) => post.getAll({ ...params })
         },{
             path: '/post/add',
