@@ -1,7 +1,10 @@
 import { Wrap } from "./styles"
+import { ISidebar } from "./types"
 
-export default function Sidebar(){
+export default function Sidebar({ children }: ISidebar){
     return (
-        <Wrap>Sidebar Block</Wrap>
+        <Wrap>
+            { children }
+        </Wrap>
     )
 }

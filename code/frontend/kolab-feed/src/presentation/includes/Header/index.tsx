@@ -1,7 +1,10 @@
 import { Wrap } from "./styles"
+import { IHeader } from "./types"
 
-export default function Header(){
+export default function Header({ children }: IHeader){
     return (
-        <Wrap>Header Block</Wrap>
+        <Wrap>
+            { children }
+        </Wrap>
     )
 }
