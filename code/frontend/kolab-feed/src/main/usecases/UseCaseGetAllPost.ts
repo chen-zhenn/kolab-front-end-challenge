@@ -11,6 +11,7 @@ import {
 
 import { 
     ServiceGetPost,
+    ServiceSupaBase,
     IHttpPostQueryParams, 
 } from '@/main/services'
 
@@ -32,7 +33,10 @@ export async function UseCaseGetAllPost(queryParams?: IHttpPostQueryParams): Pro
         const httpClient = new HttpClient<IPost[], IHttpPostQueryParams>(httpInstance.httpClient)
 
         const serviceGetPost = new ServiceGetPost(params, httpClient)
-        return await serviceGetPost.get() 
+        const serviceSupaBase = new ServiceSupaBase('posts')
+        // const data = await serviceGetPost.getAll()
+        const data = await serviceSupaBase.getAll<IPost>()
+        return data
     } catch (error) {
         throw new Error(`${error}`)
     }
