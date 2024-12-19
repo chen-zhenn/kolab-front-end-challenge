@@ -10,13 +10,14 @@ import {
 } from '@/infra'
 
 import { 
-    HttpStatusMessages, 
+    HttpStatusMessages,
+    IHttpPostQueryParams, 
 } from '@/main/services'
 
 export class ServiceGetPost {
     constructor(
-        readonly params: IHttpParams,
-        readonly httpClient: IHttpClient<IPost[]>
+        readonly params: IHttpParams<IHttpPostQueryParams>,
+        readonly httpClient: IHttpClient<IPost[], IHttpPostQueryParams>
     ) {
         if (!params || !httpClient) throw new Error()
         this.params = params
