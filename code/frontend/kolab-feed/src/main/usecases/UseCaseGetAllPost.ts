@@ -10,7 +10,8 @@ import {
 } from '@/infra'
 
 import { 
-    ServiceGetPost, 
+    ServiceGetPost,
+    IHttpPostQueryParams, 
 } from '@/main/services'
 
 const { 
@@ -18,16 +19,17 @@ const {
 } = import.meta.env
 
 
-export async function useCaseGetAllPost(): Promise<IHttpResponse<IPost[]>> {
+export async function UseCaseGetAllPost(queryParams?: IHttpPostQueryParams): Promise<IHttpResponse<IPost[]>> {
 
-    const params: IHttpParams = {
+    const params: IHttpParams<IHttpPostQueryParams> = {
         baseURL: VITE_API_BASE_URL,
         url: '/posts',
+        queryParams,
     }
 
     try {
         const httpInstance = AxiosHttpClient.getInstance(params)
-        const httpClient = new HttpClient<IPost[]>(httpInstance.httpClient)
+        const httpClient = new HttpClient<IPost[], IHttpPostQueryParams>(httpInstance.httpClient)
 
         const serviceGetPost = new ServiceGetPost(params, httpClient)
         return await serviceGetPost.get() 

@@ -25,6 +25,7 @@ const router = createBrowserRouter([{
         },{
             path: '/post/:userId',
             element: 'Post Page user Id',
+            loader: async ({ params }) => post.getAll({ ...params })
         },{
             path: '/post/add',
             element: 'Post Registration Page',
