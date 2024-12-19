@@ -24,7 +24,7 @@ export class ServiceGetPost {
         this.httpClient = httpClient
     }
 
-    async get(): Promise<IHttpResponse<IPost[]>> {
+    async getAll(): Promise<IHttpResponse<IPost[]>> {
 
         const response = await this.httpClient.get(this.params)
 
@@ -39,4 +39,6 @@ export class ServiceGetPost {
                 throw new Error()
         }
     }
+
+    async getData(){}
 }
