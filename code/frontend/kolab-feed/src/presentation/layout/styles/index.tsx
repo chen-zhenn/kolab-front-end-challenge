@@ -4,6 +4,7 @@ export const Wrap = styled.div`
     position: relative;
     display: grid;
     grid-template-columns: 0.3fr 1fr;
+    min-height: 100vh;
 `
 
 export const Header = styled.header`
