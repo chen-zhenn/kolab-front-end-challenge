@@ -8,7 +8,9 @@ function App() {
     <Layout.Wrap>
 
       <Layout.Module type='header'>
-        <Includes.Header />
+        <Includes.Header>
+          Header Block
+        </Includes.Header>
       </Layout.Module>
 
       <Layout.Module type='content'>
@@ -16,7 +18,9 @@ function App() {
       </Layout.Module>
 
       <Layout.Module type='sidebar'>
-        <Includes.Sidebar />
+        <Includes.Sidebar>
+          Sidebar Block
+        </Includes.Sidebar>
       </Layout.Module>
 
     </Layout.Wrap>
