@@ -1,6 +1,7 @@
-export interface IHttpParams {
+export interface IHttpParams<T> {
     baseURL: string | any;
     url?: string;
+    queryParams?: T;
 }
 
 export interface IHttpResponse<T> {
@@ -10,8 +11,8 @@ export interface IHttpResponse<T> {
     data: T;
 }
 
-export interface IHttpClient<T> {
-    get: (params: IHttpParams) => Promise<IHttpResponse<T>>;
+export interface IHttpClient<T, Q> {
+    get: (params: IHttpParams<Q>) => Promise<IHttpResponse<T>>;
 }
 
 export enum HttpStatusCode {
