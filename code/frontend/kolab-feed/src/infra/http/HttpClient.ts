@@ -29,4 +29,5 @@ export class HttpClient<T, Q> implements IHttpClient<T, Q> {
             `${params.baseURL}${params.url}`
         return url
     }
+
 }
