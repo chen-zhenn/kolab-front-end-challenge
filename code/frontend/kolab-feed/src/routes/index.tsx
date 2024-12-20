@@ -20,6 +20,16 @@ const router = createBrowserRouter([{
             element: <View.Feed />,
             loader: async () => post.getAll()
         },{
+            path: '/post',
+            element: <Navigate to='/feed' />,
+            children: [{
+                path: '/post/edit/',
+                element: 'Post',
+            }, {
+                path: '/post/delete/',
+                element: 'Post Edit Page',
+            },]
+        },{
             path: '/post/:userId',
             element: <View.Feed />,
             loader: async ({ params }) => post.getAll({ ...params })
