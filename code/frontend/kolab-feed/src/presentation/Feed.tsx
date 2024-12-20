@@ -36,10 +36,10 @@ export default function Feed(){
         return (
             <PostHeader.Container>
                 <PostHeader.Avatar 
-                    imageSource={post.users?.avatar} 
-                    imageName={post.users?.name} 
+                    imageSource={post?.users?.avatar} 
+                    imageName={post?.users?.username} 
                 />
-                <PostHeader.Title title={post.users?.username} />
+                <PostHeader.Title title={post?.users?.username} />
                 <PostHeader.Action action={true} />
             </PostHeader.Container>
         )
@@ -56,7 +56,7 @@ export default function Feed(){
     }
 
     function postComment(comment: IComments): React.ReactNode {
-        const post = posts.filter(item => item.id === comment.userId)[0]
+        const post = posts.filter(item => item.userId === comment.userId)[0]
         return (
             <PostComment.Container key={comment.id}>
                 <PostComment.Header>{  postHeader(post) }</PostComment.Header>
@@ -78,7 +78,7 @@ export default function Feed(){
                         <PostCard.Content 
                             content={ postContent(post) }
                             comment={
-                                post.comments && post.comments?.length ? 
+                                post.comments && !!post.comments?.length ? 
                                 (
                                     post.comments.map(comment => postComment(comment))
                                 ) : (
