@@ -1,9 +1,12 @@
 import { Title } from './styles'
 import { IPostHeader } from './types'
 
-
 export default function PostHeaderAvatar({ 
-    title, 
+    title,
+    onClick, 
 }: IPostHeader) {
-    return (<Title>{title}</Title>)
+    return (
+        <Title onClick={onClick}>
+            {title}
+        </Title>)
 }

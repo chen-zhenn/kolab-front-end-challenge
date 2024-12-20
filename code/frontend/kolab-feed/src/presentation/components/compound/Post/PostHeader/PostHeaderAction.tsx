@@ -17,7 +17,11 @@ import { ActionContainer } from './styles'
 
 export default function PostHeaderAction({ 
     action,
+    handleEdit,
+    handleDelete,
 }: IPostHeader) {
+
+    
     return (
         <ActionContainer>
             {
@@ -55,13 +59,19 @@ export default function PostHeaderAction({
                         </MenuTrigger>
 
                         <MenuContent>
-                            <MenuItem value='edit' valueText='Editar'>
+                            <MenuItem 
+                                value='edit' 
+                                valueText='Editar'
+                            >
                                 <FaEdit />
-                                <span>Editar</span>
+                                <span onClick={handleEdit}>Editar</span>
                             </MenuItem>
-                            <MenuItem value='delete' valueText='Excluir'>
+                            <MenuItem 
+                                value='delete' 
+                                valueText='Excluir'
+                            >
                                 <FaTrash />
-                                <span>Excluir</span>
+                                <span onClick={handleDelete}>Excluir</span>
                             </MenuItem>
                         </MenuContent>
 

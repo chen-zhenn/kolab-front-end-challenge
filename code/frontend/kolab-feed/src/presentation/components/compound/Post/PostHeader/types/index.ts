@@ -4,4 +4,7 @@ export interface IPostHeader {
     title?: string;
     action?: boolean;
     children?: React.ReactNode;
+    onClick?: () => void;
+    handleEdit?: () => void;
+    handleDelete?: () => void
 }

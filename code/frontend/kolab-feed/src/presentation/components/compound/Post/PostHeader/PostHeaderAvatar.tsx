@@ -4,10 +4,12 @@ import { AvatarContainer } from './styles'
 
 export default function PostHeaderAvatar({ 
     imageName, 
-    imageSource, 
+    imageSource,
+    onClick, 
 }: IPostHeader) {
+
     return (
-        <AvatarContainer>
+        <AvatarContainer onClick={onClick}>
             <Avatar 
                 name={imageName} 
                 src={imageSource}
