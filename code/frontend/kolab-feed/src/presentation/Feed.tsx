@@ -1,6 +1,7 @@
 import { 
     useLoaderData,
     useNavigate,
+    useLocation,
 } from 'react-router'
 
 import { 
@@ -23,6 +24,7 @@ import {
 export default function Feed(){
 
     const nav = useNavigate()
+    const { pathname } = useLocation()
     const response: IHttpResponse<IPost[]> = useLoaderData()
     
     if (
@@ -37,10 +39,18 @@ export default function Feed(){
             <PostHeader.Container>
                 <PostHeader.Avatar 
                     imageSource={post?.users?.avatar} 
-                    imageName={post?.users?.username} 
+                    imageName={post?.users?.username}
+                    onClick={() => nav(`/post/${post.userId}`)} 
                 />
-                <PostHeader.Title title={post?.users?.username} />
-                <PostHeader.Action action={true} />
+                <PostHeader.Title 
+                    title={post?.users?.username}
+                    onClick={() => nav(`/post/${post.userId}`)} 
+                />
+                <PostHeader.Action 
+                    action={true} 
+                    handleEdit={() => nav(`${pathname.replace(/\/delete|\/edit$/, '')}/edit`)}
+                    handleDelete={() => nav(`${pathname.replace(/\/delete|\/edit$/, '')}/delete`)}  
+                />
             </PostHeader.Container>
         )
     }
@@ -71,7 +81,7 @@ export default function Feed(){
                 posts.map(post => (
                     <PostCard.Container 
                         key={post.id} 
-                        onClick={() => nav(`/post/${post.userId}`)}
+                        // onClick={() => nav(`/post/${post.userId}`)}
                     >
 
                         <PostCard.Header>{ postHeader(post) }</PostCard.Header>

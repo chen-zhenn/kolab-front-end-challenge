@@ -18,7 +18,7 @@ export default function TopBarSection({ type, children }: ITopBar) {
     const nav = useNavigate()
 
     const section: Record<string, any> = {
-        brand: <Image src='logo.svg' onClick={() => nav('/')} style={{ cursor: 'pointer' }} />,
+        brand: <Image src='logo.svg' onClick={() => nav('/feed')} style={{ cursor: 'pointer' }} />,
         search: <Input placeholder='Pesquise por usuário' variant='subtle' />,
         profile: <Avatar name='John Doe' src='https://bit.ly/sage-adebayo' />,
         generic: <Section>{children}</Section>,
