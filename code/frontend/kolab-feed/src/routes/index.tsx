@@ -18,30 +18,26 @@ const router = createBrowserRouter([{
         },{
             path: '/feed',
             element: <View.Feed />,
-            loader: async () => post.getAll()
-        },{
-            path: '/post',
-            element: <Navigate to='/feed' />,
+            loader: async () => post.getAll(),
             children: [{
-                path: '/post/edit/',
-                element: 'Post',
-            }, {
-                path: '/post/delete/',
+                path: 'post',
+            },{
+                path: '/post/add',
+            },{
+                path: 'post/edit',
+            },{
+                path: 'post/edit/:postId',
                 element: 'Post Edit Page',
-            },]
+            },{
+                path: 'post/delete',
+            },{
+                path: 'post/delete/:postId',
+                element: 'Post Delete Confirmation Page',
+            }]
         },{
             path: '/post/:userId',
             element: <View.Feed />,
             loader: async ({ params }) => post.getAll({ ...params })
-        },{
-            path: '/post/add',
-            element: 'Post Registration Page',
-        },{
-            path: '/post/edit/:postId',
-            element: 'Post Edit Page',
-        },{
-            path: '/post/delete/:postId',
-            element: 'Post Delete Confirmation Page',
         },{
             path: '/profile',
             element: 'User Profile Page',
