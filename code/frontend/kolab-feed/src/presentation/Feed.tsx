@@ -1,15 +1,10 @@
 import { 
     useLoaderData,
-    useNavigate, 
+    useNavigate,
 } from 'react-router'
 
 import { 
-    Image,
-} from '@chakra-ui/react'
-
-import { Avatar } from '@/presentation/components/ui'
-
-import { 
+    IComments,
     IPost, 
 } from '@/domain/models'
 
@@ -17,6 +12,13 @@ import {
     IHttpResponse,
     HttpStatusCode,
 } from '@/infra'
+
+import { 
+    PostCard,
+    PostHeader,
+    PostContent,
+    PostComment,
+} from '@/presentation/components'
 
 export default function Feed(){
 
@@ -29,63 +31,64 @@ export default function Feed(){
     ) return
     
     const posts: IPost[] = response.data
+
+    function postHeader(post: IPost): React.ReactNode {
+        return (
+            <PostHeader.Container>
+                <PostHeader.Avatar 
+                    imageSource={post.users?.avatar} 
+                    imageName={post.users?.name} 
+                />
+                <PostHeader.Title title={post.users?.username} />
+                <PostHeader.Action action={true} />
+            </PostHeader.Container>
+        )
+    }
+
+    function postContent(post: IPost): React.ReactNode {
+        return (
+            <PostContent.Container>
+                <PostContent.Title title={post.title} />
+                <PostContent.Description description={post.body} />
+                <PostContent.Image imageSource={post.image} />
+            </PostContent.Container>
+        )
+    }
+
+    function postComment(comment: IComments): React.ReactNode {
+        const post = posts.filter(item => item.id === comment.userId)[0]
+        return (
+            <PostComment.Container key={comment.id}>
+                <PostComment.Header>{  postHeader(post) }</PostComment.Header>
+                <PostComment.Content contentValue={comment.body} />
+            </PostComment.Container>
+        )
+    }
     
     return (
-        <div style={{ display: 'flex', flexFlow: 'column', gap: '1.75rem' }}>
+        <>
             {
                 posts.map(post => (
-                    <ul 
-                        key={post.id}
-                        style={{
-                            listStyle: 'none',
-                            display: 'flex',
-                            flexFlow: 'column',
-                            flexWrap: 'wrap',
-                            gap: '.85rem 0',
-                            marginTop: 'unset', 
-                            padding: '13px',
-                            textAlign: 'left', 
-                            border: 'solid 1px rgba(0, 0, 0, 0.5)',
-                            cursor: 'pointer'
-                        }}
+                    <PostCard.Container 
+                        key={post.id} 
                         onClick={() => nav(`/post/${post.userId}`)}
-                        >
-                        <li style={{ maxHeight: '230px', position: 'relative', display: 'flex', }}>
-                            <Image src={post.image} width='100%' fit='cover' />
-                        </li>
-                        <li>
-                            <span style={{ fontWeight: 'bold' }}>Id do Post: </span>
-                            <span>{ post.id }</span>
-                        </li>                           
-                        <li>
-                            <span style={{ fontWeight: 'bold' }}>Id do Autor: </span>
-                            <span>{ post.userId }</span>
-                        </li>
-                        <li style={{ display: 'flex', alignItems: 'center' }}>
-                            <Avatar name='John Doe' src={post.users?.avatar} />
-                            <span style={{ fontWeight: 'bold', marginLeft: '.85rem' }}>{post.users?.username}</span>
-                        </li>
-                        <li>
-                            <span style={{ fontWeight: 'bold' }}>Titulo do Post: </span>
-                            <span>{ post.title }</span>
-                        </li>
-                        <li>
-                            <span style={{ fontWeight: 'bold' }}>Conteúdo do Post: </span>
-                            <span>{ post.body }</span>
-                        </li>
-                        <li>
-                            <span style={{ fontWeight: 'bold' }}>Comment: </span>
-                            {
-                                
-                                !!post.comments?.length && (
-                                    post.comments.map(comment => 
-                                        <span key={comment.id}>{comment.body}</span>)
+                    >
+
+                        <PostCard.Header>{ postHeader(post) }</PostCard.Header>
+                        <PostCard.Content 
+                            content={ postContent(post) }
+                            comment={
+                                post.comments && post.comments?.length ? 
+                                (
+                                    post.comments.map(comment => postComment(comment))
+                                ) : (
+                                    <PostComment.Content />
                                 )
-                            }
-                        </li>
-                    </ul>
+                            } 
+                        />
+                    </PostCard.Container>
                 ))
             }
-        </div>
+        </>
     )
 }
