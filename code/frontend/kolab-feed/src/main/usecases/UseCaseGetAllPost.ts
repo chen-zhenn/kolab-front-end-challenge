@@ -34,8 +34,9 @@ export async function UseCaseGetAllPost(queryParams?: IHttpPostQueryParams): Pro
 
         const serviceGetPost = new ServiceGetPost(params, httpClient)
         const serviceSupaBase = new ServiceSupaBase('posts')
-        // const data = await serviceGetPost.getAll()
-        const data = await serviceSupaBase.getAll<IPost>()
+        const data = await queryParams?.userId ? 
+            serviceSupaBase.getAllById<IPost>(`${queryParams?.userId}`) : 
+            serviceSupaBase.getAll<IPost>()
         return data
     } catch (error) {
         throw new Error(`${error}`)
