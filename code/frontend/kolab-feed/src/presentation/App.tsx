@@ -1,8 +1,12 @@
 import { Outlet } from 'react-router'
 import { Layout } from '@/presentation/layout'
-import { TopBar }  from '@/presentation/components'
+import { 
+  TopBar, 
+  BreadNav, 
+}  from '@/presentation/components'
 
 function App() {
+
   return (
     <Layout.Wrap>
 
@@ -17,6 +21,7 @@ function App() {
       </Layout.Module>
 
       <Layout.Module type='content'>
+        <BreadNav />
         <Outlet />
       </Layout.Module>
 
