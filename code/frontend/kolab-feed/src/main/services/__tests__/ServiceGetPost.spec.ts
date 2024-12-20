@@ -20,18 +20,20 @@ import {
 
 import { 
     HttpStatusMessages,
-    ServiceGetPost, 
+    ServiceGetPost,
+    IHttpPostQueryParams, 
 } from '@/main/services'
 
 describe('Service Post', () => {
 
-    const params: IHttpParams = {
+    const params: IHttpParams<IHttpPostQueryParams> = {
         baseURL:'baseURL',
         url: '/resource',
+        queryParams: { userId: 1 }
     }
 
     const httpInstance = AxiosHttpClient.getInstance(params)
-    const httpClient = new HttpClient<IPost[]>(httpInstance.httpClient)
+    const httpClient = new HttpClient<IPost[], IHttpPostQueryParams>(httpInstance.httpClient)
 
     describe('Get Post', () => {
 
@@ -55,11 +57,11 @@ describe('Service Post', () => {
             })
 
             it('Should return an get attribute', () => {
-                expect(serviceGetPost).toHaveProperty('get')
+                expect(serviceGetPost).toHaveProperty('getAll')
             })
 
             it('Should check if get attribute is a function', () => {
-                expect(typeof serviceGetPost.get).toBe('function')
+                expect(typeof serviceGetPost.getAll).toBe('function')
             })
         })
 
