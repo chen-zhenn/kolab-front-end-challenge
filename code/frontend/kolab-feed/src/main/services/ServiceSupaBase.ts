@@ -16,7 +16,7 @@ export class ServiceSupaBase {
             .select(`
                 *,
                 users:userId (username, avatar),
-                comments:id (id, body)
+                comments:id (id, userId, body)
             `)
 
         if(error) throw new Error()
