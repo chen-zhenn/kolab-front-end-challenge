@@ -7,7 +7,7 @@ import {
 import { 
   Header,
   Sidebar, 
-}  from '@/presentation/partials'
+}  from '@/presentation/includes'
 
 function App() {
 
