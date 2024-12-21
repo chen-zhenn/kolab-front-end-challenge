@@ -4,7 +4,7 @@ import {
     BreakPoints as breakpoints, 
 } from '@/presentation/theme'
 
-export const Wrap = styled.div`
+export const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     grid-template-columns: max-content 1fr max-content;

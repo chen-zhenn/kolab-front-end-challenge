@@ -1,13 +1,9 @@
-import {
-    Wrap, 
- } from './styles'
- 
+import { Container } from './styles'
 import { ITopBar } from './types'
 
-export default function TopBar({ children}: ITopBar){
+export default function TopBar({ children, }: ITopBar) {
+
     return (
-        <Wrap>
-            { children }
-        </Wrap>
+        <Container>{ children }</Container>
     )
 }
