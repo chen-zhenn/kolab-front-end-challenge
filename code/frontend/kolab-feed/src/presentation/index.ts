@@ -1,7 +1,16 @@
 import App from './App'
-import Feed from './Feed'
+
+import { 
+    Feed, 
+    Post, 
+} from './pages'
+
+const Pages = {
+    Feed,
+    Post, 
+}
 
 export const View = {
     App,
-    Feed,
+    Pages,
 }

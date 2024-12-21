@@ -17,7 +17,7 @@ const router = createBrowserRouter([{
             element: <Navigate to='/feed' />,
         },{
             path: '/feed',
-            element: <View.Feed />,
+            element: <View.Pages.Feed />,
             loader: async () => post.getAll(),
             children: [{
             },{
@@ -33,7 +33,7 @@ const router = createBrowserRouter([{
             },]
         },{
             path: '/post',
-            element: <View.Feed />,
+            element: <View.Pages.Post />,
             loader: async () => post.getAll(),
             children: [{
                 path: 'edit',
@@ -42,7 +42,7 @@ const router = createBrowserRouter([{
             }]
         },{
             path: '/post/:userId',
-            element: <View.Feed />,
+            element: <View.Pages.Post />,
             loader: async ({ params }) => post.getAll({ ...params }),
             children: [{
                 path: 'edit',
