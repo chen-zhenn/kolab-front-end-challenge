@@ -4,7 +4,6 @@ export const PostCardContainer = styled.article`
     margin: 0 auto;
     max-width: 50vw;
     margin-bottom: 1.75rem;
-    cursor: pointer;
 
     .-header {
         position: relative;
