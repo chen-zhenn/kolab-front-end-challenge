@@ -3,10 +3,13 @@ import {
     Wrap, 
 } from './styles'
 
-export default function Layout({ children }: ILayout){
+export default function Layout({ 
+  grid, 
+  children 
+}: ILayout){
 
     return (
-        <Wrap>
+        <Wrap grid={grid ?? 'default'}>
           {children}
         </Wrap>
       )

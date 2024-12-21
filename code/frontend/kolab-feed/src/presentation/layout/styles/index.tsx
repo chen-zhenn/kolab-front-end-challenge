@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 
-export const Wrap = styled.div`
+import { 
+    GridTemplate,  
+} from '../types'
+
+export const Wrap = styled.div<{ grid: GridTemplate }>`
     position: relative;
     display: grid;
-    grid-template-columns: 0.3fr 1fr;
+    grid-template-columns: ${(props) => setGridLayout(props.grid) };
     min-height: 100vh;
 `
 
@@ -31,3 +35,14 @@ export const Footer = styled.footer`
     grid-row: 3;
     grid-column: 1 / 3;
 `
+
+export const Generic = styled.div``
+
+function setGridLayout(grid?: GridTemplate): string {
+    const template = {
+        'default': 'repeat(auto-fit, minmax(320px, 1fr))',
+        'golden-ratio': '0.382fr 1fr',
+        'split-screen': '.7fr 1fr',
+    }
+    return grid ? template[grid] : template['default']
+}
