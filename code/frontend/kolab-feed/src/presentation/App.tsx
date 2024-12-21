@@ -12,7 +12,7 @@ import {
 function App() {
 
   return (
-    <Layout.Wrap>
+    <Layout.Wrap grid='golden-ratio'>
 
       <Layout.Module type='header'>
         <Header />

@@ -1,4 +1,5 @@
 import App from './App'
+import Auth from './Auth'
 
 import { 
     Feed, 
@@ -11,6 +12,7 @@ const Pages = {
 }
 
 export const View = {
+    Auth,
     App,
     Pages,
 }
