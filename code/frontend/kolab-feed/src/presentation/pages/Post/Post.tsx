@@ -21,7 +21,7 @@ import {
     PostComment,
 } from '@/presentation/components'
 
-export default function Feed(){
+export default function Post(){
 
     const nav = useNavigate()
     const { pathname } = useLocation()
@@ -80,8 +80,7 @@ export default function Feed(){
             {
                 posts.map(post => (
                     <PostCard.Container 
-                        key={post.id} 
-                        // onClick={() => nav(`/post/${post.userId}`)}
+                        key={post.id}
                     >
 
                         <PostCard.Header>{ postHeader(post) }</PostCard.Header>
