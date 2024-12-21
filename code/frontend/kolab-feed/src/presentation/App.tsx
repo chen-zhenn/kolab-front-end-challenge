@@ -1,9 +1,13 @@
 import { Outlet } from 'react-router'
 import { Layout } from '@/presentation/layout'
-import { 
-  TopBar, 
+import {  
   BreadNav, 
 }  from '@/presentation/components'
+
+import { 
+  Header,
+  Sidebar, 
+}  from '@/presentation/partials'
 
 function App() {
 
@@ -11,13 +15,7 @@ function App() {
     <Layout.Wrap>
 
       <Layout.Module type='header'>
-
-          <TopBar.Container>
-            <TopBar.Section type='brand' />
-            <TopBar.Section type='search' />
-            <TopBar.Section type='profile' />
-          </TopBar.Container>
-
+        <Header />
       </Layout.Module>
 
       <Layout.Module type='content'>
@@ -26,7 +24,7 @@ function App() {
       </Layout.Module>
 
       <Layout.Module type='sidebar'>
-          Sidebar Block
+          <Sidebar />
       </Layout.Module>
 
     </Layout.Wrap>
