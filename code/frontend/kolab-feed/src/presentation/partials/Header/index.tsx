@@ -2,7 +2,6 @@ import {
     TopBar,
 }  from '@/presentation/components'
 
-
 export function Header(){
     return (
         <TopBar.Container>
